@@ -1,0 +1,4 @@
+/data/cases/01727100/70-simple-test/common/src/main/java/com/acme/common/User.java
+/data/cases/01727100/70-simple-test/common/src/main/java/com/acme/common/notifications/JMSResourceProducer.java
+/data/cases/01727100/70-simple-test/common/src/main/java/com/acme/common/annotations/TaskQueue.java
+/data/cases/01727100/70-simple-test/common/src/main/java/com/acme/common/JNDILookupUtil.java
