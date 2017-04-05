@@ -358,6 +358,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:messaging-activemq:1.0">
             <!-- ##MESSAGING_SUBSYSTEM_CONFIG## -->
+        </subsystem>
         <subsystem xmlns="urn:jboss:domain:modcluster:2.0">
             <mod-cluster-config advertise-socket="modcluster" connector="ajp">
                 <dynamic-load-provider>
