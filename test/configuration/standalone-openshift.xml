@@ -139,7 +139,6 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:4.0">
             <datasources>
-		    <!-- ##DATASOURCES## -->
 		        <xa-datasource jndi-name="java:jboss/datasources/acme" pool-name="AcmeXA" enabled="true">
                     <xa-datasource-property name="URL">jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</xa-datasource-property>
                     <driver>h2</driver>
