@@ -1,7 +1,0 @@
-/data/cases/01727100/70-simple-test/model/src/main/java/com/acme/model/Task.java
-/data/cases/01727100/70-simple-test/model/src/main/java/com/acme/model/Account.java
-/data/cases/01727100/70-simple-test/model/src/main/java/com/acme/model/EntityManagerProducer.java
-/data/cases/01727100/70-simple-test/model/src/main/java/com/acme/model/AccountCdi.java
-/data/cases/01727100/70-simple-test/model/src/main/java/com/acme/model/AcmeEntityManager.java
-/data/cases/01727100/70-simple-test/model/src/main/java/com/acme/model/HasId.java
-/data/cases/01727100/70-simple-test/model/src/main/java/com/acme/model/EntityListener.java

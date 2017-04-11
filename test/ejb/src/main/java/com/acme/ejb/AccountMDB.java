@@ -9,6 +9,7 @@ import org.jboss.ejb3.annotation.ResourceAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
@@ -32,6 +33,10 @@ public class AccountMDB implements MessageListener {
     @EJB
     private TaskService taskService;
 
+//    @Inject
+//    @TaskQueue
+    private QueueConnection connection;
+
     @Inject
     @TaskQueue
     QueueSender sender;
@@ -46,18 +51,25 @@ public class AccountMDB implements MessageListener {
 
     static final Logger logger = LoggerFactory.getLogger(AccountMDB.class);
 
+    static final boolean USE_INJECTED_QUEUE_AND_SESSION = true;
 
     @Override
     public void onMessage(Message message) {
         if (message instanceof TextMessage) {
             try {
+                logger.info("Parsing text message {}", message);
                 TextMessage text = (TextMessage) message;
                 Long id = Long.parseLong(text.getText());
                 Account account = em.find(Account.class, id);
-                logger.trace("Account {} updated with id {}", account, id);
+                logger.info("Account {} updated with id {}", account, id);
 
                 Task task = taskService.createTask();
-                putTaskOnQueue(task);
+                if (USE_INJECTED_QUEUE_AND_SESSION) {
+                    putTaskOnQueue(task, session, sender);
+//                    putTaskOnQueue(task, session);
+                } else {
+                    putTaskOnQueue(task, connection); // use injected qc
+                }
 logger.info("Sleeping 10 seconds");
 Thread.sleep(10000);
 logger.info("Awake after 10 second sleep");
@@ -70,15 +82,33 @@ logger.info("Awake after 10 second sleep");
         }
     }
 
+    protected static void putTaskOnQueue(Task task, QueueConnection qc) {
+        try {
+            QueueSession session = qc.createQueueSession(true, Session.AUTO_ACKNOWLEDGE);
+            QueueSender sender = session.createSender(session.createQueue("TASKQueue"));
+            putTaskOnQueue(task, session, sender);
+        } catch (JMSException e) {
+            logger.warn("Unable to send JMS message", e);
+        }
+    }
 
-    protected void putTaskOnQueue(Task task) {
+    protected static void putTaskOnQueue(Task task, QueueSession session) {
+        try {
+            QueueSender sender = session.createSender(session.createQueue("TASKQueue"));
+            putTaskOnQueue(task, session, sender);
+        } catch (JMSException e) {
+            logger.warn("Unable to send JMS message", e);
+        }
+    }
+
+    protected static void putTaskOnQueue(Task task, QueueSession session, QueueSender sender) {
         if (task == null) {
             return;
         }
         String messageBody = task.getId().toString();
         try {
             TextMessage tm = session.createTextMessage(messageBody);
-            logger.info("Sending event {}", messageBody);
+            logger.info("Sending event {} via {} / {} ...", messageBody, session, sender);
             sender.send(tm);
             logger.info("Sent event {}", messageBody);
         } catch (JMSException e) {

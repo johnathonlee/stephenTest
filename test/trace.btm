@@ -1,0 +1,22 @@
+#RULE WrappedConnectionPrepareStatement
+#CLASS org.jboss.jca.adapters.jdbc.WrappedConnection
+#METHOD prepareStatement
+#IF true
+#DO System.out.println("[BMAN] " + $0.mc + ".prepareStatement(" + $1 + ")\n");
+#ENDRULE
+
+RULE ActiveMQRASession
+CLASS org.apache.activemq.artemis.ra.ActiveMQRASession
+METHOD <init>
+AT EXIT
+IF true
+DO traceStack("[BMAN] " + $0 + " ", 15);
+ENDRULE
+
+RULE ActiveMQRAQueueSender
+CLASS org.apache.activemq.artemis.ra.ActiveMQRAQueueSender
+METHOD <init>
+AT EXIT
+IF true
+DO traceStack("[BMAN] " + $0 + " ", 15);
+ENDRULE
