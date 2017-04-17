@@ -198,7 +198,7 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <xa-datasource jndi-name="java:jboss/datasources/acme" pool-name="AcmeXA" enabled="true">
+                <xa-datasource jndi-name="java:jboss/datasources/acme" pool-name="AcmeXA" enabled="true" statistics-enabled="true">
                     <xa-datasource-property name="URL">jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</xa-datasource-property>
                     <driver>h2</driver>
                     <xa-pool>
