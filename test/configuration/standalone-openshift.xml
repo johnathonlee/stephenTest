@@ -34,6 +34,12 @@
         <extension module="org.wildfly.extension.undertow"/>
         <!-- ##KEYCLOAK_EXTENSION## -->
     </extensions>
+    
+    <system-properties>
+        <property name="RecoveryEnvironmentBean.periodicRecoveryPeriod" value="300"/>
+        <property name="RecoveryEnvironmentBean.recoveryBackoffPeriod"  value="60"/>
+    </system-properties>
+    
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">
