@@ -1,0 +1,5 @@
+com/acme/ejb/TaskBean.class
+com/acme/ejb/TaskGeneratorBean.class
+com/acme/ejb/AccountBean.class
+com/acme/ejb/AccountMDB.class
+com/acme/ejb/TaskMDB.class

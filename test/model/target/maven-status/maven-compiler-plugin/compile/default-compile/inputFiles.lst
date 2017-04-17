@@ -1,0 +1,7 @@
+/home/jolee/stephenTest/test/model/src/main/java/com/acme/model/AcmeEntityManager.java
+/home/jolee/stephenTest/test/model/src/main/java/com/acme/model/EntityListener.java
+/home/jolee/stephenTest/test/model/src/main/java/com/acme/model/Account.java
+/home/jolee/stephenTest/test/model/src/main/java/com/acme/model/EntityManagerProducer.java
+/home/jolee/stephenTest/test/model/src/main/java/com/acme/model/Task.java
+/home/jolee/stephenTest/test/model/src/main/java/com/acme/model/AccountCdi.java
+/home/jolee/stephenTest/test/model/src/main/java/com/acme/model/HasId.java

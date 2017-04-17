@@ -1,0 +1,7 @@
+com/acme/model/EntityListener.class
+com/acme/model/EntityManagerProducer.class
+com/acme/model/Task.class
+com/acme/model/HasId.class
+com/acme/model/AccountCdi.class
+com/acme/model/AcmeEntityManager.class
+com/acme/model/Account.class
