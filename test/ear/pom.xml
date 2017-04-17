@@ -1,67 +1,66 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-      <groupId>com.acme</groupId>
-      <artifactId>test</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <relativePath>..</relativePath>
-  </parent>
+	<parent>
+		<groupId>com.acme</groupId>
+		<artifactId>test</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
 
-  <artifactId>ear</artifactId>
-  <packaging>ear</packaging>
-  <name>ear</name>
-  
+	<artifactId>ear</artifactId>
+	<packaging>ear</packaging>
+	<name>ear</name>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.acme</groupId>
-            <artifactId>common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.acme</groupId>
-            <artifactId>api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.acme</groupId>
-            <artifactId>model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.acme</groupId>
-            <artifactId>ejb</artifactId>
-            <type>ejb</type>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ear-plugin</artifactId>
-                <version>2.10.1</version>
-                <configuration>
-                    <finalName>acme-ear</finalName>
-                    <generateApplicationXml>true</generateApplicationXml>
-                    <!-- Tell Maven we are using Java EE 7 -->
-                    <version>7</version>
-                    <defaultLibBundleDir>lib</defaultLibBundleDir>
-                    <fileNameMapping>no-version</fileNameMapping>
-                    <modules>
+	<dependencies>
+		<dependency>
+			<groupId>com.acme</groupId>
+			<artifactId>common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.acme</groupId>
+			<artifactId>api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.acme</groupId>
+			<artifactId>model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.acme</groupId>
+			<artifactId>ejb</artifactId>
+			<type>ejb</type>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 
-                        <ejbModule>
-                            <groupId>com.acme</groupId>
-                            <artifactId>ejb</artifactId>
-                        </ejbModule>
-                    </modules>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<finalName>acme-ear</finalName>
+					<generateApplicationXml>true</generateApplicationXml>
+					<!-- Tell Maven we are using Java EE 7 -->
+					<version>7</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<fileNameMapping>no-version</fileNameMapping>
+					<modules>
 
+						<ejbModule>
+							<groupId>com.acme</groupId>
+							<artifactId>ejb</artifactId>
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

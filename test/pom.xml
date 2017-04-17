@@ -15,6 +15,7 @@
 	<module>ejb</module>
 	<module>ear</module>
 	<module>system-test</module>
+	<module>war</module>
   </modules>
 
     <licenses>
